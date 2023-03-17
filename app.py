@@ -1,8 +1,10 @@
 import psutil
+import platform
 import streamlit as st
 
 # Get CPU information
 cpu_percent = psutil.cpu_percent()
+cpu_name = platform.processor()
 cpu_cores = psutil.cpu_count(logical=False)
 
 # Get memory information
@@ -20,6 +22,7 @@ free_disk_space = disk.free
 disk_space_percent = disk.percent
 
 # Display the system information in Streamlit
+st.write("CPU name:", cpu_name)
 st.write("CPU usage:", cpu_percent, "%")
 st.write("CPU cores:", cpu_cores)
 st.write("Total memory:", total_memory // (1024 ** 3), "GB")
